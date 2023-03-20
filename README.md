@@ -9,7 +9,7 @@ This app was created in research goals. How does this work?:
 
 Kaggle research and used model (implimented SegNet architecture) training process: [link](https://www.kaggle.com/code/ivanshingel/cars-segmentation-research)
 
-Fastapi + HTML + CSS + JS
+STACK: Fastapi (Python 3.10) + HTML + CSS + JS
 
 
 ## Features
