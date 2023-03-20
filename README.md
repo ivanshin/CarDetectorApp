@@ -54,9 +54,9 @@ Start uvicorn server:
   uvicorn app.main:app
 ```
 
-Check it's work:
+Check it's works:
 
- - [127.0.0.1:8000](http://127.0.0.1:8000)
+ Visit: [127.0.0.1:8000](http://127.0.0.1:8000)
 
 
 
