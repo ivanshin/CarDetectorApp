@@ -14,7 +14,7 @@ Fastapi + HTML + CSS + JS
 
 ## Features
 
-CNN for this task was trained with lack of data (train dataset ~2500 semented images). The expirement was to improve segmentation result with some "tricks". Main feature:
+CNN for this task was trained with lack of data (train dataset ~2500 segmented images). The expirement was to improve segmentation result with some "tricks". Main feature:
 
 ![Image processing schema](https://github.com/ivanshin/CarDetectorApp/blob/master/webp/assets/img_proc_scheme.png)
 
