@@ -34,7 +34,7 @@ app.mount("/static", StaticFiles(directory="webp", html=True), name="ui")
 templates = Jinja2Templates(directory="webp")
 
 
-@app.route('/home')
+@app.get('/')
 async def renderReactApp(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
