@@ -1,7 +1,7 @@
 
 # CarDetectorApp
 
-This app was created in research goals. How it's work:
+This app was created in research goals. How does this work?:
 
  - Open webpage of this app 
  - Upload street with cars image
@@ -54,7 +54,7 @@ Start uvicorn server:
   uvicorn app.main:app
 ```
 
-Check it's works:
+Check if it works:
 
  Visit: [127.0.0.1:8000](http://127.0.0.1:8000)
 
