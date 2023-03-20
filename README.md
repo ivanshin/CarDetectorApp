@@ -45,7 +45,7 @@ Create virtual enviroment and activate:
 Install requirements:
 
 ```bash
-  pip istall -r requirements.txt
+  pip install -r requirements.txt
 ```
 
 Start uvicorn server:
