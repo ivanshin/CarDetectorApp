@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CarDetectorExample</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="info">
+      <h1>Car Detector</h1>
+      <div calss="descr">
+        <b>Description</b><br />
+        This app detects cars on the streets photos. Main feature is that realy
+        small train dataset (2500 segmented images) was used to train neural
+        network (SegNet architecture) with some triks was achived realy good
+        performance.
+      </div>
+    </main>
+
+    <div class="preview">
+      <center><img id="file-ip-1-preview" /></center>
+    </div>
+
+    <div class="Neon Neon-theme-dragdropbox">
+     <!--  <script src="/script.js"></script> -->
+      <input
+        style="
+          z-index: 999;
+          opacity: 0;
+          width: 320px;
+          height: 200px;
+          position: absolute;
+          right: 0px;
+          left: 0px;
+          margin-right: auto;
+          margin-left: auto;
+        "
+        name="files[]"
+        id="filer_input2"
+        multiple="multiple"
+        type="file"
+        accept="image/*"
+        onchange=getApiData(event)
+      />
+      <div class="Neon-input-dragDrop">
+        <div class="Neon-input-inner">
+          <div class="Neon-input-icon"><i class="fa fa-file-image-o"></i></div>
+          <div class="Neon-input-text">
+            <h3>Drag&amp;Drop file here</h3>
+            <span style="display: inline-block; margin: 15px 0">or</span>
+          </div>
+          <a class="Neon-input-choose-btn blue">Browse Files</a>
+        </div>
+      </div>
+    </div>
+
+    <h2>Examples</h2>
+    <div class="slider">
+      <span id="slide-1"></span>
+      <span id="slide-2"></span>
+      <span id="slide-3"></span>
+      <div class="image-container">
+        <img
+          src="assets/test_1.jpg"
+          class="slide"
+          width="500"
+          height="300"
+        />
+        <img
+          src="assets/test_2.jpg"
+          class="slide"
+          width="500"
+          height="300"
+        />
+        <img
+          src="assets/test_3.jpg"
+          class="slide"
+          width="500"
+          height="300"
+        />
+      </div>
+      <div class="buttons">
+        <a href="#slide-1"></a>
+        <a href="#slide-2"></a>
+        <a href="#slide-3"></a>
+      </div>
+    </div>
+    
+    <script >
+      function base64toBlob(base64Data, contentType) {
+        contentType = contentType || '';
+        var sliceSize = 1024;
+        var byteCharacters = atob(base64Data);
+        var bytesLength = byteCharacters.length;
+        var slicesCount = Math.ceil(bytesLength / sliceSize);
+        var byteArrays = new Array(slicesCount);
+
+        for (var sliceIndex = 0; sliceIndex < slicesCount; ++sliceIndex) {
+            var begin = sliceIndex * sliceSize;
+            var end = Math.min(begin + sliceSize, bytesLength);
+        
+            var bytes = new Array(end - begin);
+            for (var offset = begin, i = 0; offset < end; ++i, ++offset) {
+                bytes[i] = byteCharacters[offset].charCodeAt(0);
+            }
+            byteArrays[sliceIndex] = new Uint8Array(bytes);
+        }
+        return new Blob(byteArrays, { type: contentType });
+    }
+
+      async function getApiData(event){
+
+        if (event.target.files.length > 0) {
+          var src = event.target.files[0];
+          var preview = document.getElementById('file-ip-1-preview');
+          var data = new FormData();
+          data.append('file', src);
+          try {
+            const response = await fetch("http://127.0.0.1:8000/predict", {
+              method: 'POST',
+              body: data,
+            })
+            //console.log(response.text())
+            response.text().then(b64Data => {
+              const blob = base64toBlob(b64Data, 'image.jpg');
+              const blobUrl = URL.createObjectURL(blob);
+              preview.src =  blobUrl});
+            
+          } catch (error) {}
+        }
+    };
+    </script>
+  </body>
+</html>
