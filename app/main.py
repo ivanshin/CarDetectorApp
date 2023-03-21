@@ -1,12 +1,15 @@
 #for debug only
+from os.path import dirname, realpath, sep, pardir
 import sys
-sys.path.append('D:\\Projects\\Python\\CarDetector')
+print(dirname(realpath(__file__))+ sep+ pardir)
+sys.path.append(dirname(realpath(__file__)) + sep + pardir + sep)
 
 import io
 import uvicorn
 import base64
 from PIL import Image
 from fastapi import FastAPI, Request, UploadFile, Response
+from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -34,7 +37,7 @@ app.mount("/static", StaticFiles(directory="webp", html=True), name="ui")
 templates = Jinja2Templates(directory="webp")
 
 
-@app.get('/')
+@app.get('/', response_class=HTMLResponse)
 async def renderReactApp(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
