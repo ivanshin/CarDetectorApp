@@ -1,5 +1,5 @@
 
-# CarDetectorApp
+# CarDetectorApp 🚙
 
 This app was created in research goals. How does this work?:
 
@@ -7,10 +7,13 @@ This app was created in research goals. How does this work?:
  - Upload street with cars image
  - Wait for result (see Demo section)
 
-Kaggle research and used model (implimented SegNet architecture) training process: [link](https://www.kaggle.com/code/ivanshingel/cars-segmentation-research)
+Kaggle research and used model (implemented SegNet architecture) training process: [link](https://www.kaggle.com/code/ivanshingel/cars-segmentation-research)
 
-STACK: Fastapi (Python 3.10) + HTML + CSS + JS
+## Tech Stack
 
+**Client:** HTML, CSS, JS
+
+**Server:** Fastapi (Python 3.10), uvicorn
 
 ## Features
 
@@ -56,7 +59,17 @@ Start uvicorn server:
 
 Check if it works:
 
- Visit: [127.0.0.1:8000](http://127.0.0.1:8000)
+  Visit: [127.0.0.1:8000](http://127.0.0.1:8000)
 
+## Hugging face
+
+---
+title: Car Detector
+emoji: 🚙
+colorFrom: white
+colorTo: blue
+sdk: docker
+pinned: true
+---
 
 ## Demo
