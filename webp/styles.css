@@ -40,6 +40,70 @@ h2 {
   min-width: 50%;
 }
 
+@keyframes spin {
+  0% {
+      transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(72deg);
+  }
+  40% {
+    transform: rotate(144deg);
+  }
+  60% {
+    transform: rotate(216deg);
+  }
+  80% {
+    transform: rotate(288deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+@-ms-keyframes spin{
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(72deg);
+  }
+  40% {
+    transform: rotate(144deg);
+  }
+  60% {
+    transform: rotate(216deg);
+  }
+  80% {
+    transform: rotate(288deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin{
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(72deg);
+  }
+  40% {
+    transform: rotate(144deg);
+  }
+  60% {
+    transform: rotate(216deg);
+  }
+  80% {
+    transform: rotate(288deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
 .Neon {
   font-family: sans-serif;
   font-size: 14px;

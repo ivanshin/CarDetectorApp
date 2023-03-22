@@ -21,11 +21,21 @@
     </main>
 
     <div class="preview">
-      <center><img id="file-ip-1-preview" /></center>
+      <center><img id="file-ip-1-preview", style="max-width: 450px; max-height: 450px; object-fit: contain;"></center>
     </div>
 
-    <div class="Neon Neon-theme-dragdropbox">
-     <!--  <script src="/script.js"></script> -->
+    <div id="loader", style="
+      width: 4rem;
+      height: 4rem;
+      border: 5px solid #f3f3f3;
+      border-top: 6px solid rgb(84, 158, 207);
+      border-radius: 100%;
+      margin: auto;
+      visibility: hidden;
+      animation: spin 1s infinite linear;
+      -webkit-animation: spin 1s linear infinite;
+      -ms-keyframes: spin 1s linear infinite;"></div>
+    <div class="Neon Neon-theme-dragdropbox", style="visibility: visible;">
       <input
         style="
           z-index: 999;
@@ -97,7 +107,6 @@
         var bytesLength = byteCharacters.length;
         var slicesCount = Math.ceil(bytesLength / sliceSize);
         var byteArrays = new Array(slicesCount);
-
         for (var sliceIndex = 0; sliceIndex < slicesCount; ++sliceIndex) {
             var begin = sliceIndex * sliceSize;
             var end = Math.min(begin + sliceSize, bytesLength);
@@ -114,9 +123,17 @@
       async function getApiData(event){
 
         if (event.target.files.length > 0) {
+          var box = document.getElementsByClassName("Neon Neon-theme-dragdropbox")
+          var loader = document.getElementById('loader')
+
+          box[0].style.visibility = 'hidden'
+          loader.style.visibility = 'visible'
+
           var src = event.target.files[0];
           var preview = document.getElementById('file-ip-1-preview');
+          preview.style.visibility = 'hidden'
           var data = new FormData();
+
           data.append('file', src);
           try {
             const response = await fetch("http://127.0.0.1:8000/predict", {
@@ -127,6 +144,9 @@
             response.text().then(b64Data => {
               const blob = base64toBlob(b64Data, 'image.jpg');
               const blobUrl = URL.createObjectURL(blob);
+              loader.style.visibility = 'hidden';
+              box[0].style.visibility = 'visible'
+              preview.style.visibility = 'visible'
               preview.src =  blobUrl});
             
           } catch (error) {}
