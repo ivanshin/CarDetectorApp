@@ -15,10 +15,6 @@ jobs:
       packages: write
       contents: read
     steps:
-    - name: checkout engine without LFS
-      uses: actions/checkout@v2
-      with:
-        lfs: false
     - name: checkout engine with LFS
       uses: actions/checkout@v2
       with:
