@@ -15,15 +15,11 @@ jobs:
       packages: write
       contents: read
     steps:
-      - name: checkout engine without LFS
-        uses: actions/checkout@v2
-        with:
-          lfs: false
       - name: apply_lfs_filters
         run: |
-          git config --local lfs.fetchexclude '**/Windows/**'
-      - name: checkout engine with LFS
-        uses: actions/checkout@v2
+          git lfs fetch --all
+      - name: Check out the repo
+        uses: actions/checkout@v3
         with:
           lfs: true
       - name: Log in to the container registry
