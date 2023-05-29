@@ -19,9 +19,6 @@ jobs:
       uses: actions/checkout@v2
       with:
         lfs: false
-    - name: apply_lfs_filters
-      run: |
-        git config --local lfs.fetchexclude '**/Windows/**'
     - name: checkout engine with LFS
       uses: actions/checkout@v2
       with:
